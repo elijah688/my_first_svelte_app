@@ -1,7 +1,11 @@
-<script>
-    import Card from "../../../UI/Card.svelte";
+<script lang="ts">
+	import Card from '../../../UI/Card.svelte';
+	export let title: string;
+	export let subtitle: string;
+	export let content: string;
+	export let src: string;
 </script>
 
-<Card />
+<Card {...{ title, subtitle, content, src }} />
 
 <style></style>

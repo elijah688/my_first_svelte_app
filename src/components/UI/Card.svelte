@@ -1,37 +1,29 @@
-<script>
-    /**
-     * @type {string}
-     */
-     export let title
-     /**
-     * @type {string}
-     */
-    export let subtitle
-    /**
-     * @type {string}
-     */
-    export let content
-    export let src
-
+<script lang="ts">
+	export let title: string;
+	export let subtitle: string;
+	export let content: string;
+	export let src: string;
 </script>
 
-<article>
-    <header>
-        <h1>{title}</h1>
-        <h2>{subtitle}</h2>
-    </header>
-    <body>
-        <img alt="img" />
-        <div>
-            <p>Content</p>
-        </div>
-    </body>
+<article class="card mb-3">
+	<img class="card-img-top" alt={title} {src} />
+	<div class="card-body">
+		<header>
+			<h1 class="card-title">{title}</h1>
+			<h2 class="card-subtitle mb-2 text-muted">{subtitle}</h2>
+		</header>
+		<p class="card-text">{content}</p>
+	</div>
 </article>
 
 <style>
-    article{
-        margin: auto;
-        border: 1px solid black;
-        width: 50vw;
-    }
+	img {
+		object-fit: cover;
+		height: 200px;
+	}
+
+	article {
+		max-width: 800px;
+		margin: auto;
+	}
 </style>
