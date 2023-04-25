@@ -1,12 +1,6 @@
 <script lang="ts">
 	import MeetupItem from './MeetupItem/MeetupItem.svelte';
-	interface ItemModel {
-		title: string;
-		subtitle: string;
-		content: string;
-		src: string;
-	}
-
+	import type { ItemModel } from '../.../../../../types';
 	export let items: ItemModel[];
 </script>
 
