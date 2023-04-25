@@ -7,7 +7,7 @@
 
 <article class="card mb-3" style="max-width: 800px;">
 	{#if src != ''}
-		<img class="card-img-top" alt={title} {src} style="height: 200px; object-fit: cover;">
+		<img class="card-img-top" alt={title} {src} style="height: 200px; object-fit: cover;" />
 	{/if}
 
 	<div class="card-body" style="min-height: 200px;">

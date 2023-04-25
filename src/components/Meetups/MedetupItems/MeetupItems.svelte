@@ -6,9 +6,9 @@
 </script>
 
 <div class="row">
-	{#each $items as item}
+	{#each $items as item, id}
 		<div class="col-md-6">
-			<MeetupItem {...item} />
+			<MeetupItem {...{ ...item, id: id.toString() }} />
 		</div>
 	{/each}
 </div>
