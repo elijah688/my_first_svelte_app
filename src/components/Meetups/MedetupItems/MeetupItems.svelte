@@ -1,11 +1,12 @@
 <script lang="ts">
 	import MeetupItem from './MeetupItem/MeetupItem.svelte';
-	import type { ItemModel } from '../.../../../../types';
-	export let items: ItemModel[];
+	import type { Context } from '../.../../../../types';
+	import { getContext } from 'svelte';
+	const { items } = getContext<Context>('ctx');
 </script>
 
 <div class="row">
-	{#each items as item}
+	{#each $items as item}
 		<div class="col-md-6">
 			<MeetupItem {...item} />
 		</div>

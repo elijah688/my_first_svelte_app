@@ -13,3 +13,9 @@ export interface FormField {
 	value: string;
 	required: boolean
 }
+
+import type { Writable } from 'svelte/store';
+
+export interface Context {
+	items: Writable<ItemModel[]>;
+}

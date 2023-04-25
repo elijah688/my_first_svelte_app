@@ -1,8 +1,7 @@
 <script lang="ts">
 	import type { FormField } from '../../../types';
-	import type { ItemModel } from '../../../types';
-
-	export let submit: Function;
+	import type { ItemModel, Context } from '../../../types';
+	import { getContext } from 'svelte';
 	export let fields: FormField[];
 	let formInvalidBool = false;
 	let firstRequiredField = '';
@@ -14,6 +13,7 @@
 	) => {
 		field.value = e.currentTarget?.value;
 	};
+	const { items } = getContext<Context>('ctx');
 
 	const handleSubmit = () => {
 		let item: ItemModel = { title: '', subtitle: '', content: '', src: '' };
@@ -27,7 +27,7 @@
 			}
 		}
 
-		submit(item);
+		items.update((items) => [...items, item]);
 	};
 </script>
 
