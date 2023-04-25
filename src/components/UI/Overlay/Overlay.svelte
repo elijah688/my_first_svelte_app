@@ -1,9 +1,12 @@
 <script lang="ts">
-	export let isOpen = false;
 	export let closeOnEscape = true;
+	import { getContext } from 'svelte';
+	import type { Context } from '../../../types';
+
+	const { addOverlayIsOpen: isOpen } = getContext<Context>('ctx');
 
 	function closeOverlay() {
-		isOpen = false;
+		isOpen.update((x) => !x);
 	}
 
 	const handleKeyDown = (
@@ -25,7 +28,7 @@
 	};
 </script>
 
-{#if isOpen}
+{#if $isOpen}
 	<div class="overlay" on:click={closeOverlay} on:keydown={() => {}}>
 		<div class="overlay-content" on:click={stopPropagation} on:keydown={handleKeyDown}>
 			<slot />

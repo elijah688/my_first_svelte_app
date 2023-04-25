@@ -18,4 +18,5 @@ import type { Writable } from 'svelte/store';
 
 export interface Context {
 	items: Writable<ItemModel[]>;
+	addOverlayIsOpen: Writable<boolean>
 }

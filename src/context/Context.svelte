@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { setContext } from 'svelte';
 	import { writable } from 'svelte/store';
-	import type { Context } from '../types';
+
 	// create a writable store with an initial value
 	const itemModel = {
 		title: 'Lorem Ipsum',
@@ -12,7 +12,10 @@
 	};
 
 	// pass the store to the child component using context
-	setContext('ctx', { items: writable([itemModel, itemModel, itemModel]) });
+	setContext('ctx', {
+		items: writable([itemModel, itemModel, itemModel]),
+		addOverlayIsOpen: writable(false)
+	});
 </script>
 
 <slot />

@@ -13,7 +13,7 @@
 	) => {
 		field.value = e.currentTarget?.value;
 	};
-	const { items } = getContext<Context>('ctx');
+	const { items, addOverlayIsOpen } = getContext<Context>('ctx');
 
 	const handleSubmit = () => {
 		let item: ItemModel = { title: '', subtitle: '', content: '', src: '' };
@@ -28,6 +28,7 @@
 		}
 
 		items.update((items) => [...items, item]);
+		addOverlayIsOpen.update(() => false);
 	};
 </script>
 
