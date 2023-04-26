@@ -17,7 +17,8 @@
 				{ label: 'title', value: '', type: 'text', required: true },
 				{ label: 'subtitle', value: '', type: 'text', required: false },
 				{ label: 'content', value: '', type: 'textarea', required: true },
-				{ label: 'src', value: '', type: 'textarea', required: false }
+				{ label: 'src', value: '', type: 'text', required: false },
+				// { label: 'checked', checked: 'true', type: 'checkbox', required: false }
 			]}
 		/>
 	</Overlay>

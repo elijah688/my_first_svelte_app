@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	import { faUser, faEnvelope } from 'svelte-awesome/icons';
+	import Icon from 'svelte-awesome';
+	import { trash, pencil } from 'svelte-awesome/icons';
+	import { getContext } from 'svelte';
+	import type { Context } from '../../../../types';
 
 	import Card from '../../../UI/Card/Card.svelte';
-	
-
 	export let id: string;
 	export let title: string;
 	export let subtitle: string;
@@ -27,6 +28,8 @@
 			showButtons = false;
 		});
 	});
+
+	const { addOverlayIsOpen, edditingId } = getContext<Context>('ctx');
 </script>
 
 <div {id} class="position-relative">
@@ -34,8 +37,28 @@
 
 	{#if showButtons}
 		<div class="card-button-group" transition:fly={{ y: 10 }}>
-			<button type="button" class="btn btn-primary">Button 1</button>
-			<button type="button" class="btn btn-secondary">Button 2</button>
+			<button
+				on:click={() => {
+					addOverlayIsOpen.set(true);
+					edditingId.set(parseInt(id));
+				}}
+				type="button"
+				class="btn btn-success d-flex justify-content-evenly align-items-center"
+			>
+				<div class="m-1">Edit</div>
+				<Icon data={pencil} />
+			</button>
+
+			<button
+				on:click={() => {
+					console.log(id);
+				}}
+				type="button"
+				class="btn btn-danger d-flex align-items-center"
+			>
+				<div class="m-1">Delete</div>
+				<Icon data={trash} />
+			</button>
 		</div>
 	{/if}
 </div>

@@ -1,11 +1,12 @@
 <script lang="ts">
 	export let closeOnEscape = true;
-	import { getContext } from 'svelte';
+	import { getContext, onDestroy } from 'svelte';
 	import type { Context } from '../../../types';
 
-	const { addOverlayIsOpen: isOpen } = getContext<Context>('ctx');
+	const { addOverlayIsOpen: isOpen, edditingId } = getContext<Context>('ctx');
 
 	function closeOverlay() {
+		edditingId.set(-1);
 		isOpen.update((x) => !x);
 	}
 
