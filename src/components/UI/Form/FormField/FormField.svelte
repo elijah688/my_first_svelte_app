@@ -3,11 +3,13 @@
 	export let checked: string = '';
 	export let label: string;
 	export let type: string;
+	export let onInput: svelte.JSX.FormEventHandler<HTMLInputElement>;
 </script>
 
 {#if type == 'text'}
 	<input
-		bind:value
+		on:input={onInput}
+		{value}
 		id={label}
 		placeholder={`Please enter a ${label}`}
 		class="form-control"
@@ -15,7 +17,8 @@
 	/>
 {:else if type == 'textarea'}
 	<input
-		bind:value
+		on:input={onInput}
+		{value}
 		id={label}
 		placeholder={`Please enter a ${label}`}
 		class="form-control"
@@ -23,5 +26,5 @@
 	/>
 {:else if type == 'checkbox'}
 	<label for={label}>{label}</label>
-	<input bind:value id={label} type="checkbox" checked={checked == 'true' ? true : false} />
+	<input {value} id={label} type="checkbox" checked={checked == 'true' ? true : false} />
 {/if}

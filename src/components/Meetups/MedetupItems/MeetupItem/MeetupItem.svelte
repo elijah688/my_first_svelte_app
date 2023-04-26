@@ -29,7 +29,7 @@
 		});
 	});
 
-	const { addOverlayIsOpen, edditingId } = getContext<Context>('ctx');
+	const { addOverlayIsOpen, edditingId, items } = getContext<Context>('ctx');
 </script>
 
 <div {id} class="position-relative">
@@ -50,9 +50,8 @@
 			</button>
 
 			<button
-				on:click={() => {
-					console.log(id);
-				}}
+				on:click={() =>
+					items.update((is) => is.filter((item) => is.indexOf(item) !== parseInt(id)))}
 				type="button"
 				class="btn btn-danger d-flex align-items-center"
 			>
